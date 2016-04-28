@@ -13,9 +13,9 @@ public class Main {
 		emp.setSupervisor(emp2);
 		emp.setStaff(staff);
 
-		// Employee employee = (Employee) emp.doclone();
-		// employee.getSupervisor().setFirstname("lalalalalalalalala");
-		// employee.getSupervisor().setLastname("lalalalalalalalala");
+		 Employee employee = (Employee) emp.clone();
+		 employee.getSupervisor().setFirstname("lalalalalalalalala");
+		 employee.getSupervisor().setLastname("lalalalalalalalala");
 
 		System.out.println(emp.toString());
 	}

@@ -1,5 +1,8 @@
 package prototype;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -83,11 +86,14 @@ public class Employee implements Cloneable, Serializable {
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		Employee employee = (Employee) super.clone();
-		//employee.supervisor = (Employee) supervisor.clone();
-		for (int i = 0; i < staff.length; i++) {
-			employee.staff[i] = (Employee) staff[i].clone();
+		int size = staff.length;
+		for (int i = 0; i < size; ++i) {
+			employee.staff[i] = (Employee) staff[i].doclone();
 		}
 		return employee;
+	}
+	protected Object doclone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 	public void setLastname(String lastname) {
@@ -106,4 +112,19 @@ public class Employee implements Cloneable, Serializable {
 				+ ", supervisor=" + supervisor + ", staff="
 				+ Arrays.toString(staff) + "]";
 	}
+	
+//	@SuppressWarnings("unchecked")
+//	public static<T>  T clone(T t) throws Exception {
+//	    //Check if T is instance of Serializeble other throw CloneNotSupportedException
+//	    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//	 
+//	    //Serialize it
+//	    serializeToOutputStream(t, bos);
+//	    
+//	    byte[] bytes = bos.toByteArray();
+//	    ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bytes));
+//	 
+//	    //Deserialize it and return the new instance
+//	    return (T)ois.readObject();
+//	}
 }
