@@ -9,8 +9,8 @@ import java.util.Arrays;
 @SuppressWarnings("serial")
 public class Employee implements Cloneable, Serializable {
 	private int id;
-	private String Lastname ;
-	private String Firstname ;
+	private String Lastname;
+	private String Firstname;
 	private String streetAddress;
 	private String city;
 	private String state;
@@ -18,9 +18,8 @@ public class Employee implements Cloneable, Serializable {
 	private Employee supervisor;
 	private Employee staff[];
 
-	public Employee(int id, String lastname, String firstname,
-			String streetAddress, String city, String state, String zipcode
-			) {
+	public Employee(int id, String lastname, String firstname, String streetAddress, String city, String state,
+			String zipcode) {
 		super();
 		this.id = id;
 		Lastname = lastname;
@@ -86,12 +85,16 @@ public class Employee implements Cloneable, Serializable {
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		Employee employee = (Employee) super.clone();
+		if (supervisor != null) {
+			employee.supervisor = (Employee) supervisor.doclone();
+		}
 		int size = staff.length;
 		for (int i = 0; i < size; ++i) {
 			employee.staff[i] = (Employee) staff[i].doclone();
 		}
 		return employee;
 	}
+
 	protected Object doclone() throws CloneNotSupportedException {
 		return super.clone();
 	}
@@ -106,25 +109,25 @@ public class Employee implements Cloneable, Serializable {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", Lastname=" + Lastname + ", Firstname="
-				+ Firstname + ", streetAddress=" + streetAddress + ", city="
-				+ city + ", state=" + state + ", zipcode=" + zipcode
-				+ ", supervisor=" + supervisor + ", staff="
-				+ Arrays.toString(staff) + "]";
+		return "Employee [id=" + id + ", Lastname=" + Lastname + ", Firstname=" + Firstname + ", streetAddress="
+				+ streetAddress + ", city=" + city + ", state=" + state + ", zipcode=" + zipcode + ", supervisor="
+				+ supervisor + ", staff=" + Arrays.toString(staff) + "]";
 	}
-	
-//	@SuppressWarnings("unchecked")
-//	public static<T>  T clone(T t) throws Exception {
-//	    //Check if T is instance of Serializeble other throw CloneNotSupportedException
-//	    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//	 
-//	    //Serialize it
-//	    serializeToOutputStream(t, bos);
-//	    
-//	    byte[] bytes = bos.toByteArray();
-//	    ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bytes));
-//	 
-//	    //Deserialize it and return the new instance
-//	    return (T)ois.readObject();
-//	}
+
+	// @SuppressWarnings("unchecked")
+	// public static<T> T clone(T t) throws Exception {
+	// //Check if T is instance of Serializeble other throw
+	// CloneNotSupportedException
+	// ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	//
+	// //Serialize it
+	// serializeToOutputStream(t, bos);
+	//
+	// byte[] bytes = bos.toByteArray();
+	// ObjectInputStream ois = new ObjectInputStream(new
+	// ByteArrayInputStream(bytes));
+	//
+	// //Deserialize it and return the new instance
+	// return (T)ois.readObject();
+	// }
 }
