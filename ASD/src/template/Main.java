@@ -3,14 +3,13 @@ package template;
 public class Main {
 
 	public static void main(String args[]) {
-		String letterA = "A";
-		String letterB = "B";
-		String letterC = "C";
-        
-		new LetterA(letterA);
-		new LetterB(letterB);
-		new LetterC(letterC);
+		System.out.println(reverse("AMOS"));
 		
-		
+	}
+	
+	public static String reverse(String string){
+		if(string.length()==0)return string;
+		String first = ""+string.charAt(0);
+		return reverse(string.substring(1))+first;
 	}
 }
