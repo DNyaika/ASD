@@ -1,9 +1,9 @@
 package factoryHeadFast.main;
 
+import factoryHeadFast.ChicagoPizzaStore;
+import factoryHeadFast.NYPizzaStore;
+import factoryHeadFast.PizzaStore;
 import factoryHeadFast.domain.pizza.Pizza;
-import headfastfactory.ChicagoPizzaStore;
-import headfastfactory.NYPizzaStore;
-import headfastfactory.PizzaStore;
 
 public class PizzaTestDrive {
 	

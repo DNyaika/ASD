@@ -1,4 +1,4 @@
-package headfastfactory;
+package factoryHeadFast;
 
 import factoryHeadFast.domain.pizza.Pizza;
 
