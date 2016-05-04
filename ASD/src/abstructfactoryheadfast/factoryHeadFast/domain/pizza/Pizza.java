@@ -1,24 +1,25 @@
 package abstructfactoryheadfast.factoryHeadFast.domain.pizza;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
+import abstructfactoryheadfast.factoryHeadFast.domain.ingridient.Cheese;
+import abstructfactoryheadfast.factoryHeadFast.domain.ingridient.Clams;
+import abstructfactoryheadfast.factoryHeadFast.domain.ingridient.Dough;
+import abstructfactoryheadfast.factoryHeadFast.domain.ingridient.Pepperoni;
+import abstructfactoryheadfast.factoryHeadFast.domain.ingridient.Sauce;
+import abstructfactoryheadfast.factoryHeadFast.domain.ingridient.Veggies;
 
 public abstract class Pizza {
 	public String name;
-	public String dough;
-	public String sauce;
-	public List<String> toppings = new ArrayList<String>();
+	public Dough dough;
+	public Sauce sauce;
+	// public List<String> toppings = new ArrayList<String>();
+	public Veggies veggies[];
+	public Cheese cheese;
+	public Pepperoni pepperoni;
+	public Clams clam;
 
-	public void prepare() {
-		System.out.println("Preparing " + name);
-		System.out.println("Tossing dough.......");
-		System.out.println("Adding sauce.....");
-		System.out.println("Adding toppings: ");
-		for (int i = 0; i < toppings.size(); i++) {
-			System.out.println("  " + toppings.get(i));
-		}
-	}
+	public abstract void prepare();
 
 	public void bake() {
 		System.out.println("Bake for 25  minutes at 350");
@@ -35,4 +36,16 @@ public abstract class Pizza {
 	public String getName() {
 		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Pizza [name=" + name + ", dough=" + dough + ", sauce=" + sauce
+				+ ", veggies=" + Arrays.toString(veggies) + ", cheese="
+				+ cheese + ", pepperoni=" + pepperoni + ", clam=" + clam + "]";
+	}
+
 }
