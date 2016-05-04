@@ -1,5 +1,5 @@
 package abstructfactoryheadfast.factoryHeadFast.domain.ingridient;
 
-public interface Pepperoni {
+public  abstract class Pepperoni {
 
 }

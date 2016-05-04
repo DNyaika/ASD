@@ -8,6 +8,7 @@ public class NYCheesePizza extends Pizza {
 		dough = "Thin crust Dough";
 		sauce = "Marina Sauce";
 		toppings.add("Grated Reggiano Cheese");
+		
 	}
 
 	public void cut() {
