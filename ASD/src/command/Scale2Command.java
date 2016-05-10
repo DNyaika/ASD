@@ -3,9 +3,11 @@ package command;
 public class Scale2Command implements Command {
 
 	Square square;
+	Square squareCopy;
 
-	public Scale2Command(Square square) {
+	public Scale2Command(Square square) throws CloneNotSupportedException {
 		this.square = square;
+		squareCopy = (Square) square.clone();
 	}
 
 	@Override
@@ -16,7 +18,8 @@ public class Scale2Command implements Command {
 
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
+		int side = squareCopy.getSide() / 2;
+		square.setSide(side);
 
 	}
 

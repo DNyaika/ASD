@@ -2,7 +2,7 @@ package command;
 
 public class MoveRightBy3Command implements Command {
 	Square square;
-
+	Square squareCopy;
 	public MoveRightBy3Command(Square square) {
 		this.square = square;
 	}
@@ -14,8 +14,7 @@ public class MoveRightBy3Command implements Command {
 
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
-
+		square.setPosition(squareCopy.getPosition());
 	}
 
 }
